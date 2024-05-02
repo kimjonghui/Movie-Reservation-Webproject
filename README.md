@@ -2,6 +2,10 @@
 
 본 프로젝트의 주된 목적은 사용자에게 효율적이고 간편한 영화 예매 경험을 제공하는 웹 페이지를 구축하는 것입니다. 이 예매 페이지는 사용자가 빠르고 쉽게 영화를 예매할 수 있도록 디자인 및 설계되었습니다.
 
+# 프로젝트 인원
+
+• 3명
+
 # 사용된 언어 및 기술
 
 ![JAVA](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
@@ -13,7 +17,7 @@
 #  코드 통합 및 관리 
 ![GIT](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 
-•개인 브랜치에서 작업 후 메인 브랜치로 병합하는 Git 플로우를 사용
+• 개인 브랜치에서 작업 후 메인 브랜치로 병합하는 Git 플로우를 사용
 
 
 # 제작 동기 및 목적
