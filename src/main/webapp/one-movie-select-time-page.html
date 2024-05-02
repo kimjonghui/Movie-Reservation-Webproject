@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .navigation-item a, .auth-links a {
+            padding: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #737373;
+            text-decoration: none;
+        }
+
+        .auth-links a {
+            color: #23a6f0;
+        }
+
+        .auth-container {
+            margin-left: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column; /* Changed to column */
+            align-items: flex-start; /* Changed to flex-start */
+            gap: 41px;
+        }
+
+        .poster-container {
+            display: flex;
+            justify-content: space-between; /* Changed to space-between */
+            gap: 41px; /* Moved gap to justify-content */
+            align-items: center;
+        }
+
+        .poster {
+            flex-grow: 0;
+            flex-shrink: 0;
+            width: 557px;
+            height: 399px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(217, 217, 217, 0.5);
+        }
+
+        .movieinfo {
+            width: 397px;
+            font-size: 40px;
+            font-weight: 700;
+            text-align: left;
+            color: #000;
+        }
+
+        .timeBox {
+            width: 729px;
+            height: 782px;
+            background: #d9d9d9;
+            margin-top: 100px; /* Adjusted margin-top */
+        }
+
+        .timeText {
+            font-size: 40px;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .nextbox {
+    width: 232px;
+    height: 70px;
+    background: #d9d9d9;
+    position: fixed;
+    bottom: 20px; /* 원하는 거리 */
+    right: 20px; /* 원하는 거리 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.next-icon {
+    margin-right: 5px;
+}
+
+.next-text {
+    font-size: 32px;
+    font-weight: 500;
+    color: #000;
+}
+
+    </style>
+</head>
+<body>
+    
+<div class="header-container">
+    <div class="nav-links">
+        <div class="navigation-item"><a href="#home">Home</a></div>
+        <div class="navigation-item"><a href="#booking">예매</a></div>
+        <div class="navigation-item"><a href="#movies">영화</a></div>
+        <div class="navigation-item"><a href="#mypage">MyPage</a></div>
+        <div class="navigation-item"><a href="#support">고객센터</a></div>
+    </div>
+    <div class="auth-container">
+        <div class="auth-links">
+            <a href="#login">Login</a> / <a href="#register">Register</a>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div>
+        <p class="timeText" style="position: absolute; left: 60%; ">시간표</p>
+    </div>
+    <div class="poster-container">
+        <div class="poster">
+            <p style="position: absolute; left: 207px; top: 178px; font-size: 24px; font-weight: 700; text-align: left; color: #000;">
+                영화 포스터
+            </p>
+        </div>
+        <p class="movieinfo">
+            <span>영화 제목</span><br /><br />
+            <span>개봉일자</span><br />
+            <span>| 상영시간</span><br />
+            <span>| 관람등급</span><br />
+            <span>| 누적 관객</span>
+        </p>
+        <div class="timeBox">
+            
+        </div> <!-- Moved timeBox inside poster-container -->
+    </div>
+</div>
+
+<div class="nextbox">
+    <div class="next-wrapper">
+        <svg class="next-icon" width="14" height="14" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 20.5714L8.57143 12L0 3.42857L1.71429 0L13.7143 12L1.71429 24L0 20.5714Z" fill="#23A6F0"></path>
+        </svg>
+        <p class="next-text">NEXT</p>
+    </div>
+</div>
+</body>
+<script>
+    var nextBox = document.querySelector('.nextbox');
+    nextBox.addEventListener('click', function() {
+        gotonext(seatInfo);
+    });
+    var timeStamp = 선택된시간대;
+    function gotonext(timeStamp) {
+        var isBig = 영화관이큰지작은지boolean값;
+        // 현재 페이지 URL에서 쿼리 문자열 가져오기
+        var queryString = window.location.search;
+        // URLSearchParams 객체 생성
+        var urlParams = new URLSearchParams(queryString);
+        // movieName 매개변수 값 가져오기
+        var title = urlParams.get('title');
+        var theaterName = urlParams.get('theaterName');
+        var url;
+
+        if(seatCount>=1 && seatCount<= 10) {
+          if(isBig) {
+            url = "seat-big.jsp?theaterName=" + encodeURIComponent(theaterName) + "&title=" + encodeURIComponent(title) + "&timeStamp=" + encodeURIComponent(timeStamp);
+          } else {
+            url = "seat-medium.jsp?theaterName=" + encodeURIComponent(theaterName) + "&title=" + encodeURIComponent(title) + "&timeStamp=" + encodeURIComponent(timeStamp);
+          }
+        }
+    }
+</script>
+</html>
